@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Office_Supplies</fullName>
+    <active>true</active>
+    <label>Office Supplies</label>
+    <picklistValues>
+        <picklist>Family</picklist>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>QuantityUnitOfMeasure</picklist>
+        <values>
+            <fullName>Each</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Required_Software__c</picklist>
+        <values>
+            <fullName>Adobe Creative Cloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Antivirus %28e%2Eg%2E%2C Norton%2C McAfee%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AutoCAD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eclipse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Endpoint Protection %28e%2Eg%2E%2C Symantec%2C CrowdStrike%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Firewall %28e%2Eg%2E%2C pfSense%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Workspace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IntelliJ IDEA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LibreOffice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Linux %28e%2Eg%2E%2C Ubuntu%2C CentOS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Microsoft Office Suite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TeamViewer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Visual Studio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Windows Server</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>macOS</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

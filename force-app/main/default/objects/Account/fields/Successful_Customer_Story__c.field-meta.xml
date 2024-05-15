@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Successful_Customer_Story__c</fullName>
+    <externalId>false</externalId>
+    <label>Successful Customer Story</label>
+    <summaryFilterItems>
+        <field>Customer_Feedback__c.Sucess__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Customer_Feedback__c.Account__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <type>Summary</type>
+</CustomField>

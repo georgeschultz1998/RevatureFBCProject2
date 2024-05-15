@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Service_Technician__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox for if the user is a service tech or not</description>
+    <externalId>false</externalId>
+    <label>Is Service Technician</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

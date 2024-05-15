@@ -1,0 +1,81 @@
+<apex:page controller="ContactManagerController" sidebar="false" showHeader="true">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.GroupStyles)}" /> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <apex:form >
+        <apex:pageMessages />
+        <div class="header">
+            <nav>
+                <!-- Display the uploaded image -->
+                <apex:image value="{!URLFOR($Resource.FBCLogo)}" alt="FBC Logo" />
+                <!-- Output Links for Navigation -->
+                <apex:outputLink value="/apex/ContactManager">
+                    <i class="material-icons">contacts</i>
+                    Contacts
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OrderManager">
+                    <i class="material-icons">inventory</i>
+                    Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/AccountLeadManager">
+                    <i class="material-icons">groups</i>
+                    Accounts/Leads
+                </apex:outputLink>
+                <apex:outputLink value="/apex/WorkOrderManager">
+                    <i class="material-icons">work</i>
+                    Work Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OpportunityManager">
+                    <i class="material-icons">trending_up</i>
+                    Opportunities
+                </apex:outputLink>
+            </nav>
+        </div>
+
+    	<apex:pageBlock title="Create New Contact">
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!newContact.FirstName}" />
+                <apex:inputField value="{!newContact.Phone}" />
+                <apex:inputField value="{!newContact.LastName}" />
+                <apex:inputField value="{!newContact.Email}" />
+                <apex:inputField value="{!newContact.RecordTypeId}" />
+                <apex:inputField value="{!newContact.AccountId}" />
+                <apex:commandButton value="Create Contact" action="{!createContact}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Existing Customers">
+            <apex:pageBlockTable value="{!customers}" var="cus">
+                <apex:column value="{!cus.FirstName}" headerValue="First Name" />
+                <apex:column value="{!cus.LastName}" headerValue="Last Name" />
+                <apex:column value="{!cus.Phone}" headerValue="Phone" />
+                <apex:column value="{!cus.Email}" headerValue="Email" />
+                <apex:column value="{!cus.AccountId}" headerValue="Account" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteContact}">
+                        <apex:param name="cusId" value="{!cus.Id}" assignTo="{!deleteId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form >
+        <apex:pageBlock title="Existing Service Technicians">
+            <apex:pageBlockTable value="{!serviceTechnicians}" var="tech">
+                <apex:column value="{!tech.FirstName}" headerValue="First Name" />
+                <apex:column value="{!tech.LastName}" headerValue="Last Name" />
+                <apex:column value="{!tech.Phone}" headerValue="Phone" />
+                <apex:column value="{!tech.Email}" headerValue="Email" />
+                <apex:column value="{!tech.AccountId}" headerValue="Account" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteContact}">
+                        <apex:param name="techId" value="{!tech.Id}" assignTo="{!deleteId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

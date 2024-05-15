@@ -1,0 +1,62 @@
+<apex:page controller="OpportunityManagerController" sidebar="false" showHeader="true">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.GroupStyles)}" /> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <apex:form >
+        <apex:pageMessages />
+        <div class="header">
+            <nav>
+                <!-- Display the uploaded image -->
+                <apex:image value="{!URLFOR($Resource.FBCLogo)}" alt="FBC Logo" />
+                <!-- Output Links for Navigation -->
+                <apex:outputLink value="/apex/ContactManager">
+                    <i class="material-icons">contacts</i>
+                    Contacts
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OrderManager">
+                    <i class="material-icons">inventory</i>
+                    Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/AccountLeadManager">
+                    <i class="material-icons">groups</i>
+                    Accounts/Leads
+                </apex:outputLink>
+                <apex:outputLink value="/apex/WorkOrderManager">
+                    <i class="material-icons">work</i>
+                    Work Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OpportunityManager">
+                    <i class="material-icons">trending_up</i>
+                    Opportunities
+                </apex:outputLink>
+            </nav>
+        </div>
+
+        
+        <!-- Form to create a new opportunity -->
+        <apex:pageBlock title="Create New Opportunity">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!newOpportunity.Name}" />
+                <apex:inputField value="{!newOpportunity.CloseDate}" />
+                <apex:inputField value="{!newOpportunity.StageName}" />
+                <apex:commandButton value="Create Opportunity" action="{!createOpportunity}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Existing Opportunities">
+            <apex:pageBlockTable value="{!opportunities}" var="opp">
+                <apex:column value="{!opp.Name}" headerValue="Name" />
+                <apex:column value="{!opp.CloseDate}" headerValue="Close Date" />
+                <apex:column value="{!opp.StageName}" headerValue="Stage Name" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteOpportunity}">
+                        <apex:param name="oppId" value="{!opp.Id}" assignTo="{!deleteId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

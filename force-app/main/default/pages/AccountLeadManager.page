@@ -1,0 +1,94 @@
+<apex:page controller="AccountLeadManagerController" sidebar="false" showHeader="true">
+     <head>
+        <apex:stylesheet value="{!URLFOR($Resource.GroupStyles)}" /> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <apex:form >
+        <apex:pageMessages />
+        <div class="header">
+            <nav>
+                <!-- Display the uploaded image -->
+                <apex:image value="{!URLFOR($Resource.FBCLogo)}" alt="FBC Logo" />
+                <!-- Output Links for Navigation -->
+                <apex:outputLink value="/apex/ContactManager">
+                    <i class="material-icons">contacts</i>
+                    Contacts
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OrderManager">
+                    <i class="material-icons">inventory</i>
+                    Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/AccountLeadManager">
+                    <i class="material-icons">groups</i>
+                    Accounts/Leads
+                </apex:outputLink>
+                <apex:outputLink value="/apex/WorkOrderManager">
+                    <i class="material-icons">work</i>
+                    Work Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OpportunityManager">
+                    <i class="material-icons">trending_up</i>
+                    Opportunities
+                </apex:outputLink>
+            </nav>
+        </div>
+
+        
+        <!-- Form to create a new account -->
+        <apex:pageBlock title="Create New Account">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!newAccount.Name}" />
+                <apex:inputField value="{!newAccount.Phone}" />
+                <apex:inputField value="{!newAccount.Industry}" />
+                <apex:commandButton value="Create Account" action="{!createAccount}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Existing Accounts">
+            <apex:pageBlockTable value="{!Accounts}" var="acc">
+                <apex:column value="{!acc.Name}" headerValue="Name" />
+                <apex:column value="{!acc.Phone}" headerValue="Phone" />
+                <apex:column value="{!acc.Industry}" headerValue="Industry" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteAccount}">
+                        <apex:param name="accId" value="{!acc.Id}" assignTo="{!deleteAccId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+    	<apex:pageBlock title="Create New Lead">
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!newLead.FirstName}" />
+                <apex:inputField value="{!newLead.Company}" />
+                <apex:inputField value="{!newLead.LastName}" />
+                <apex:inputField value="{!newLead.Email}" />
+                <apex:inputField value="{!newLead.Status}" />
+                <apex:inputField value="{!newLead.Phone}" />
+                <apex:commandButton value="Create Lead" action="{!createLead}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Existing Leads">
+            <apex:pageBlockTable value="{!Leads}" var="lead">
+                <apex:column value="{!lead.FirstName}" headerValue="First Name" />
+                <apex:column value="{!lead.LastName}" headerValue="Last Name" />
+                <apex:column value="{!lead.Status}" headerValue="Status" />
+                <apex:column value="{!lead.Company}" headerValue="Company" />
+                <apex:column value="{!lead.Email}" headerValue="Email" />
+                <apex:column value="{!lead.Phone}" headerValue="Phone" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteLead}">
+                        <apex:param name="leadId" value="{!lead.Id}" assignTo="{!deleteLeadId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

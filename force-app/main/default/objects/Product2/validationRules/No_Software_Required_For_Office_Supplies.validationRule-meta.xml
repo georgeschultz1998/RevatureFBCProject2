@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Software_Required_For_Office_Supplies</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  RecordType.DeveloperName = &apos;Office_Supplies&apos;,
+  NOT(ISBLANK(Required_Software__c))
+)</errorConditionFormula>
+    <errorMessage>Office Supplies products should not have required software.</errorMessage>
+</ValidationRule>

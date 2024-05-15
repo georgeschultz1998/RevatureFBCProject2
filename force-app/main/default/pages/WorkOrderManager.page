@@ -1,0 +1,62 @@
+<apex:page controller="WorkOrderManagerController" sidebar="false" showHeader="true">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.GroupStyles)}" /> 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </head>
+    <apex:form >
+        <apex:pageMessages />
+        <div class="header">
+            <nav>
+                <!-- Display the uploaded image -->
+                <apex:image value="{!URLFOR($Resource.FBCLogo)}" alt="FBC Logo" />
+                <!-- Output Links for Navigation -->
+                <apex:outputLink value="/apex/ContactManager">
+                    <i class="material-icons">contacts</i>
+                    Contacts
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OrderManager">
+                    <i class="material-icons">inventory</i>
+                    Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/AccountLeadManager">
+                    <i class="material-icons">groups</i>
+                    Accounts/Leads
+                </apex:outputLink>
+                <apex:outputLink value="/apex/WorkOrderManager">
+                    <i class="material-icons">work</i>
+                    Work Orders
+                </apex:outputLink>
+                <apex:outputLink value="/apex/OpportunityManager">
+                    <i class="material-icons">trending_up</i>
+                    Opportunities
+                </apex:outputLink>
+            </nav>
+        </div>
+        
+        <!-- Form to create a new work order-->
+        <apex:pageBlock title="Create New Work Order">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!newWorkOrder.ParentWorkOrderId}" />
+                <apex:inputField value="{!newWorkOrder.Status}" />
+                <apex:inputField value="{!newWorkOrder.ContactId}" />
+                <apex:inputField value="{!newWorkOrder.Priority}" />
+                <apex:commandButton value="Create WorkOrder" action="{!createWorkOrder}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        <apex:pageBlock title="Existing Work Order">
+            <apex:pageBlockTable value="{!workorders}" var="wo">
+                <apex:column value="{!wo.Id}" headerValue="Id" />
+                <apex:column value="{!wo.Status}" headerValue="Status" />
+                <apex:column value="{!wo.Priority}" headerValue="Priority" />
+                <apex:column >
+                    <apex:commandLink value="Delete" action="{!deleteWorkOrder}">
+                        <apex:param name="workId" value="{!wo.Id}" assignTo="{!deleteId}" />
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
